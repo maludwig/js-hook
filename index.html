@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Hook</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="hook.js"></script>
+	<script type="text/javascript">
+		$(function() {
+            var h = new Hook($("body"));
+            h(listener1); //Adds a listener
+            h("aardvark","baboon","cat"); //Emits event, triggering all listeners (just listener1 right now)
+            h(listener2); //Adds the second listener
+            h("apple","banana","carrot"); //Emits event, triggering all listeners (both listeners are triggered)
+		});
+        function listener1(a,b,c) {
+            this.append("<p>This is the first listener. {a:" + a + ", b:" + b + ", c:" + c + "}</p>");
+        }
+        function listener2() {
+            this.append("<p>This is the second listener</p>");
+        }
+	</script>
+</head>
+
+<body>
+	
+</body>
+</html>
+
